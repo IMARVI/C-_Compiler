@@ -31,12 +31,8 @@ tokens = [
     'RBRACKET',
     'LKEY',
     'RKEY',
-    'COMMENTS',
-    'COMMENTE',
     'ID',
     'NUM',
-    'LETTER',
-    'DIGT',
     'ENDFILE'
     ]+list(reserved.values())
 
@@ -63,7 +59,7 @@ t_RBRACKET  = r'\]'
 t_LKEY      = r'\{'
 t_RKEY      = r'\}'
 eof         = '$'
-t_ENDFILE = r'\$'
+t_ENDFILE   = r'\$'
 
 t_ignore = ' \t'
 

@@ -1,7 +1,7 @@
 from globalTypes import *
 from lexer import *
 
-f = open('./sample.c-', 'r')
+f = open('./sample2.c-', 'r')
 
 programa = f.read() + '$'
 

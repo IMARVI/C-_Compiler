@@ -20,12 +20,10 @@ def cargarPrograma():
 
 
 def impresion(nodo,i):
-
     if isinstance(nodo,tuple):
         for n in range(len(nodo)):
             if isinstance(nodo[n], tuple) or isinstance(nodo[n], str):
-
-                if len(nodo) > 1:
+                if len(nodo) >= 1:
                     if n < 1:
                         if len(nodo) == 2 and isinstance(nodo[1], str):
                             print('| ' * i, nodo[0])
@@ -35,6 +33,9 @@ def impresion(nodo,i):
                     elif isinstance(nodo[n], str):
                         print('| '*i, nodo[n])
                 impresion(nodo[n], i+1)
+            elif isinstance(nodo[n],int):
+                print('| ' * i, nodo[n])
+                impresion(nodo[n], i+1)
 
 
 
@@ -42,8 +43,6 @@ def parse(imprime):
     t = parser.parse(programa)
     if imprime:
         impresion(t,0)
-
         return t
-
     else: 
         return t
