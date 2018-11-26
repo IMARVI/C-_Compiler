@@ -10,6 +10,6 @@ programa = programa + '$'   # agregar un caracter $ que represente EOF
 posicion = 0       # posición del caracter actual del string
 globales(programa, posicion, progLong)
 
-AST = parse(True)
-semantica(AST, True)
+AST = parse(False)
+semantica(AST, False)
 codeGen(AST, 'file.s')

@@ -1,8 +1,5 @@
 /* Un programa para realizar ordenacion por */
 
-int x[10];
-int q;
-
 int minloc(int a[], int low, int high){
   int i;
   int x;
@@ -36,11 +33,10 @@ void sort( int a[], int low, int high){
 void main(void){
   int i;
   i = 0;
-  q = 10;
   while(i<10){
     i = i+1;
   }
-  sort(2,x,10);
+  sort(2,1,10);
   i = 0;
   while(i<10){
     i = i+1;
