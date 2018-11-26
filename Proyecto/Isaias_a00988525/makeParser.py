@@ -15,12 +15,12 @@ precedence = (
 )
 # Definimos nuestras reglas gramaticales como metodos
 
-def p_program(p):
+def p_program(p): #----------listo
     'program    : declaration_list'
 
     p[0] = ('programa',p[1])
 
-def p_declaration_list(p):
+def p_declaration_list(p): #----------listo
     '''     declaration_list    : declaration_list declaration
                                 | declaration                
     '''
@@ -29,7 +29,7 @@ def p_declaration_list(p):
     else: p[0] = ('declaration list',p[1])
     
 
-def p_declaration(p):
+def p_declaration(p): #----------listo
     '''     declaration     : var_declaration
                             | fun_declaration
                             | ENDFILE
@@ -37,7 +37,7 @@ def p_declaration(p):
     p[0] = ('declaration',p[1])
     
 
-def p_var_declaration(p): 
+def p_var_declaration(p): #------------ listo
     '''     var_declaration : type_specifier ID SEMICOLON
                             | type_specifier ID LBRACKET NUM RBRACKET SEMICOLON
     '''
@@ -46,26 +46,26 @@ def p_var_declaration(p):
         p[0] = ('var declaration',p[1],p[2],p[3])
     else: p[0] = ('var declaration',p[1],p[2],p[3],p[4],p[5],p[6])
 
-def p_type_specifier(p): 
+def p_type_specifier(p):  #------------ listo
     ''' 
             type_specifier  : INT
                             | VOID 
     '''
     p[0] = ('type specifier',p[1])
 
-def p_fun_declaration(p):
+def p_fun_declaration(p): #------------ listo
     'fun_declaration : type_specifier ID LPAREN params RPAREN compound_stmt'
     funciones[p[2]] = p[1][1]
     p[0] = ('fun declaration',p[1],p[2],p[3],p[4],p[5],p[6])
 
 
-def p_params(p):
+def p_params(p): #------------ listo
     ''' params      : param_list
                     | VOID
     '''
     p[0] = ('params',p[1])
 
-def p_param_list(p):
+def p_param_list(p): #------------ listo
     ''' param_list      : param_list COMA param
                         | param
     '''
@@ -73,7 +73,7 @@ def p_param_list(p):
         p[0] = ('param list',p[1],p[2],p[3])
     else: p[0] = ('param list',p[1])
 
-def p_param(p):
+def p_param(p): #------------ listo
     ''' param   : type_specifier ID
                 | type_specifier ID LBRACKET RBRACKET
     '''
@@ -83,11 +83,11 @@ def p_param(p):
     else: 
         p[0] = ('param', p[1],p[2],p[3])
 
-def p_compound_stmt(p):
+def p_compound_stmt(p): #------------ listo
     'compound_stmt : LKEY local_declarations statement_list RKEY'
     p[0] = ('compound stmt',p[1],p[2],p[3],p[4])
 
-def p_local_declarations(p):
+def p_local_declarations(p): #------------ listo
     ''' local_declarations  : local_declarations var_declaration
                             | empty
     '''
@@ -95,14 +95,14 @@ def p_local_declarations(p):
         p[0] = ("local declarations", p[1],p[2])
     
 
-def p_statement_list(p):
+def p_statement_list(p): #------------ listo
     ''' statement_list  : statement_list statement
                         | empty
     '''
     if len(p) == 3:
         p[0] = ('statement list',p[1],p[2])
 
-def p_statement(p):
+def p_statement(p): #------------ listo
     ''' statement   : expression_stmt
                     | compound_stmt
                     | selection_stmt
@@ -111,7 +111,7 @@ def p_statement(p):
     '''
     p[0] = ('statement',p[1])
 
-def p_expression_stmt(p):
+def p_expression_stmt(p): #------------ listo
     ''' expression_stmt  : expression SEMICOLON
                         | SEMICOLON
     '''
@@ -119,7 +119,7 @@ def p_expression_stmt(p):
         p[0] = ('expression stmt', p[1],p[2])
     else: p[0] = ('expression stmt',p[1])
 
-def p_selection_stmt(p):
+def p_selection_stmt(p): #------------ listo
     ''' selection_stmt  : IF LPAREN expression RPAREN statement
                         | IF LPAREN expression RPAREN statement ELSE statement
     '''
@@ -186,7 +186,7 @@ def p_addop(p):
     '''     addop   : PLUS
                     | MINUS
     '''
-    p[0] = p[1]
+    p[0] = ('addop',p[1])
 
 def p_term(p):
     ''' term    : term mulop factor

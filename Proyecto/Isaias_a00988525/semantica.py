@@ -3,6 +3,7 @@ actual_scope=0
 funval = []
 evalNum = 2
 
+
 def semantica(arbol, imprime = True):
   tabla(arbol)
   global actual_scope
